@@ -1,4 +1,10 @@
 #!/usr/bin/ruby
+#
+# paymemo.rb
+#
+# Copyright (C) 2010 TADA Tadashi <t@tdtds.jp>
+# You can modify and distribue this under GPL.
+#
 require 'rubygems'
 require 'cgi'
 require 'json'
