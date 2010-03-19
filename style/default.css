@@ -1,0 +1,62 @@
+/*
+default.css
+
+Copyright (C) 2010 TADA Tadashi <t@tdtds.jp>
+You can modify and distribue this under GPL.
+ */
+
+body {
+	margin: 0px;
+	padding: 4px;
+	background-color: #eee;
+	//border: solid 1px #f00;
+	width: 480px;
+}
+
+h1 {
+	font-size: small;
+	text-align: right;
+}
+
+.paymemo form {
+	width: 100%;
+}
+
+.paymemo table {
+	border-top:1px solid #444;
+	border-left:1px solid #444;
+	border-collapse:collapse;
+	border-spacing:0;
+	background-color:#ffffff;
+	empty-cells:show;
+	width: 100%;
+}
+
+.paymemo caption {
+	text-align: right;
+}
+
+.paymemo th {
+	border-right:1px solid #444;
+	border-bottom:1px solid #444;
+	color:#fff;
+	background-color:#777;
+	padding:0.3em 1em;
+	text-align: left;
+	width: 70%;
+}
+
+.paymemo td {
+	border-right:1px solid #444;
+	border-bottom:1px solid #444;
+	padding:0.3em 1em;
+	text-align: right;
+}
+
+@media screen and (max-device-width: 480px) {
+	body {
+		width: 480px;
+		font-size: 80%;
+	}
+}
+
