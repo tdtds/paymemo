@@ -4,7 +4,11 @@ require 'cgi'
 require 'json'
 
 def load( db )
-	JSON::parse( open( "#{db}.json", &:read ) )
+	begin
+		JSON::parse( open( "#{db}.json", &:read ) )
+	rescue Errno::ENOENT
+		{'total' => 0, 'list' => []}
+	end
 end
 
 def save( db, data )
