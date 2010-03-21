@@ -1,8 +1,8 @@
 /*
-paymemo.js
+ paymemo.js
 
-Copyright (C) 2010 TADA Tadashi <t@tdtds.jp>
-You can modify and distribue this under GPL.
+ Copyright (C) 2010 TADA Tadashi <t@tdtds.jp>
+ You can modify and distribue this under GPL.
  */
 
 function addFigure(str) {
@@ -11,14 +11,17 @@ function addFigure(str) {
 	return num;
 }
 
+function post() {
+}
+
 $(function(){
 	$('.paymemo').each(function(){
 		var e = this;
 		var db = $(e).attr('id');
 		$(e).children('h2').text(db);
-		$(e).children('form').attr('action','paymemo.cgi');
+		$(e).children('form').attr('action',paymemoAPI);
 		$(e).children('form').children('input[name=db]').attr('value',db);
-		$.getJSON('paymemo.cgi?db='+db,function(json){
+		$.getJSON(paymemoAPI+'?db='+db,function(json){
 			var table = $(e).children('table');
 			table.append('<caption>Total: '+addFigure(json['total'])+'</caption>');
 			jQuery.each(json['list'],function(){
