@@ -22,15 +22,15 @@ h1 {
 	width: 100%;
 }
 
-paymemo-item {
+.paymemo-item {
 	width: 100px;
 }
 
-paymemo-amount {
+.paymemo-amount {
 	width: 25px;
 }
 
-paymemo-submit {
+.paymemo-submit {
 }
 
 .paymemo table {
