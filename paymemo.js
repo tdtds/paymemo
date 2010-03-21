@@ -47,6 +47,7 @@ $(function(){
 		$('.paymemo-item')[0].focus();
 		$.getJSON(paymemoAPI+'?db='+db,function(json){
 			var table = $(e).children('table');
+			table.empty();
 			table.append('<caption>Total: '+addFigure(json['total'])+'</caption>');
 			jQuery.each(json['list'],function(){
 				table.append('<tr><th>'+this[0]+'</th><td>'+addFigure(this[1])+'</td></tr>');
