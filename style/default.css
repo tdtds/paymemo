@@ -1,8 +1,8 @@
 /*
-default.css
+ default.css
 
-Copyright (C) 2010 TADA Tadashi <t@tdtds.jp>
-You can modify and distribue this under GPL.
+ Copyright (C) 2010 TADA Tadashi <t@tdtds.jp>
+ You can modify and distribue this under GPL.
  */
 
 body {
@@ -20,6 +20,17 @@ h1 {
 
 .paymemo form {
 	width: 100%;
+}
+
+paymemo-item {
+	width: 100px;
+}
+
+paymemo-amount {
+	width: 25px;
+}
+
+paymemo-submit {
 }
 
 .paymemo table {
