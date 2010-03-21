@@ -21,10 +21,13 @@ def save( db, data )
 	open( "#{db}.json", 'w' ){|f| f.write( data.to_json ) }
 end
 
+#
+# returning total amount and recent 5 items with json format.
+#
 def get( cgi )
 	db, = cgi.params['db']
 	data = load( CGI::escape db )
-	data['list'].reverse!
+	data['list'] = data['list'].reverse[0,5]
 
 	print cgi.header(
 		'status' => 'OK',
@@ -33,6 +36,9 @@ def get( cgi )
 	print data.to_json
 end
 
+#
+# receiving new amount then returning new total and a item with json format.
+#
 def post( cgi )
 	db = cgi.params['db'][0] || 'sample'
 	item = cgi.params['item'][0] || 'dummy'
@@ -43,13 +49,16 @@ def post( cgi )
 		data['list'] << [item, amount, Time::now::strftime('%Y%m%d')]
 		data['total'] += amount
 		save( CGI::escape( db ), data )
-	end
 
+		data['list'] = data['list'].reverse[0,1]
+	else
+		data['list'] = [] # returning empty list
+	end
 	print cgi.header(
 		'status' => 'OK',
-		'type' => 'application/json',
-		'location' => './'
+		'type' => 'application/json'
 	)
+	print data.to_json
 end
 
 cgi = CGI::new
