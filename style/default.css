@@ -5,12 +5,16 @@
  You can modify and distribue this under GPL.
  */
 
+* {
+	margin: 0;
+	padding: 0;
+}
+
 body {
-	margin: 0px;
-	padding: 4px;
+	width: 320px;
 	background-color: #eee;
-	//border: solid 1px #f00;
-	width: 480px;
+	font-size: 80%;
+	line-height: 1.8;
 }
 
 h1 {
@@ -18,29 +22,39 @@ h1 {
 	text-align: right;
 }
 
+.paymemo {
+	margin-bottom: 10px;
+	padding: 5px;
+}
+
 .paymemo form {
 	width: 100%;
+	margin-top: 5px;
+	margin-bottom: 5px;
 }
 
 .paymemo-item {
-	width: 100px;
+	width: 60%;
+	padding: 0.5em;
 }
 
 .paymemo-amount {
-	width: 25px;
+	width: 15%;
+	padding: 0.5em;
 }
 
 .paymemo-submit {
+	width: 10%;
 }
 
 .paymemo table {
+	width: 100%;
 	border-top:1px solid #444;
 	border-left:1px solid #444;
 	border-collapse:collapse;
 	border-spacing:0;
 	background-color:#ffffff;
 	empty-cells:show;
-	width: 100%;
 }
 
 .paymemo caption {
@@ -55,7 +69,7 @@ h1 {
 	background-color:#777;
 	padding:0.3em 1em;
 	text-align: left;
-	width: 70%;
+	//width: 70%;
 }
 
 .paymemo td {
@@ -63,12 +77,5 @@ h1 {
 	border-bottom:1px solid #444;
 	padding:0.3em 1em;
 	text-align: right;
-}
-
-@media screen and (max-device-width: 480px) {
-	body {
-		width: 480px;
-		font-size: 80%;
-	}
 }
 
