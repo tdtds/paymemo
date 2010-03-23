@@ -62,6 +62,10 @@ h1 {
 	padding-right: 1em;
 }
 
+.paymemo caption.loading {
+	text-align: center;
+}
+
 .paymemo th {
 	border-right:1px solid #444;
 	border-bottom:1px solid #444;
