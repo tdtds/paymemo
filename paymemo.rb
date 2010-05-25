@@ -31,7 +31,8 @@ def get( cgi )
 
 	print cgi.header(
 		'status' => 'OK',
-		'type' => 'application/json'
+		'type' => 'application/json',
+		'cache-control' = 'no-cache'
 	)
 	print data.to_json
 end
@@ -56,7 +57,8 @@ def post( cgi )
 	end
 	print cgi.header(
 		'status' => 'OK',
-		'type' => 'application/json'
+		'type' => 'application/json',
+		'cache-control' = 'no-cache'
 	)
 	print data.to_json
 end
