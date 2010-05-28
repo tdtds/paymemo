@@ -44,7 +44,6 @@ $(function(){
 			return false;
 		});
 		f.children('input[name=db]').attr('value',db);
-		$('.paymemo-item')[0].focus();
 		$.getJSON(paymemoAPI+'?db='+db,function(json){
 			var table = $(e).children('table');
 			table.empty();
