@@ -1,4 +1,5 @@
 #!/usr/bin/ruby
+## -*- coding: utf-8; -*-
 #
 # paymemo.rb
 #
@@ -11,7 +12,7 @@ require 'json'
 
 def load( db )
 	begin
-		JSON::parse( open( "#{db}.json", &:read ) )
+		JSON::parse( open( "#{db}.json", 'r:utf-8', &:read ) )
 	rescue Errno::ENOENT
 		{'total' => 0, 'list' => []}
 	end
