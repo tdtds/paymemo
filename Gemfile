@@ -17,5 +17,6 @@ group :development, :test do
 	gem 'rake'
 	gem 'rspec'
 	gem 'sinatra-reloader', require: 'sinatra/reloader'
+	gem 'pit', require: 'pit'
 	gem 'pry'
 end
