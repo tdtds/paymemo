@@ -1,43 +1,42 @@
+# -*- coding: utf-8; -*-
 #
-# returning total amount and recent 5 items with json format.
+# routes/init.rb : initialize routes
 #
-def get( cgi )
-	db, = cgi.params['db']
-	data = load( CGI::escape db )
-	data['list'] = data['list'].reverse[0,5]
-
-	print cgi.header(
-		'status' => 'OK',
-		'type' => 'application/json',
-		'cache-control' => 'no-cache'
-	)
-	print data.to_json
-end
-
+# Copyright (C) 2013 TADA Tadashi <t@tdtds.jp>
+# You can modify and distribue this under GPL.
 #
-# receiving new amount then returning new total and a item with json format.
-#
-def post( cgi )
-	db = cgi.params['db'][0] || 'sample'
-	item = cgi.params['item'][0] || 'dummy'
-	amount = (cgi.params['amount'][0] || '0').to_i
+module PayMemo
+	class App < Sinatra::Base
+		get '/' do
+			haml :index
+		end
 
-	data = load( CGI::escape db )
-	if amount != 0 then
-		data['list'] << [item, amount, Time::now::strftime('%Y%m%d')]
-		data['total'] += amount
-		save( CGI::escape( db ), data )
+		#
+		# returning total amount and recent 5 items with json format.
+		#
+		get '/:wallet.json' do
+			list = Payment.find_by_wallet(params(:wallet)).reverse[0,5]
+			total = Payment.total(wallet)
 
-		data['list'] = data['list'].reverse[0,1]
-	else
-		data['list'] = [] # returning empty list
+			{'list': list, 'total': total}.to_json
+		end
+
+		#
+		# receiving new amount then returning new total and a item with json format.
+		#
+		post '/:wallet' do
+			wallet = params[:wallet]
+			item = params[:item]
+			amount = (params[:amount] || '0').to_i
+			result = {}
+
+			if amount != 0
+				result['list'] = [Payment.add(wallet, item, amount)]
+			else
+				result['list'] = []
+			end
+			result['total'] = Payment.total(:wallet)
+			result.to_json
+		end
 	end
-	print cgi.header(
-		'status' => 'OK',
-		'type' => 'application/json',
-		'cache-control' => 'no-cache'
-	)
-	print data.to_json
 end
-
-
