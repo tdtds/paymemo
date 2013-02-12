@@ -25,7 +25,7 @@ module PayMemo
 				:id => ENV['TWITTER_CONSUMER_ID'],
 				:secret => ENV['TWITTER_CONSUMER_SECRET']
 			}
-			MongoMapper::connection = Mongo::Connection.from_uri(ENV['MONGOLAB_URI'])
+			@db_uri = URI.parse(ENV['MONGOLAB_URI'])
 		end
 
 		configure :development, :test do
@@ -37,12 +37,13 @@ module PayMemo
 					:id => 'your CONSUMER KEY of Twitter APP.',
 					:secret => 'your CONSUMER SECRET of Twitter APP.',
 				} )
-			MongoMapper::connection = Mongo::Connection.from_uri('mongodb://localhost:27017/paymemo')
+			@db_uri = URI.parse('mongodb://localhost:27017/paymemo')
 		end
+		MongoMapper::connection = Mongo::Connection.from_uri(@db_uri.to_s)
 
 		use(
 			Rack::Session::Mongo,{
-				:db => DB,
+				:db => MongoMapper.connection.db('dbname'),
 				:expire_after => 6 * 30 * 24 * 60 * 60,
 				:secret => ENV['SESSION_SECRET']
 			})
