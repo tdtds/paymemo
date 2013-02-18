@@ -13,6 +13,8 @@ require 'omniauth'
 require 'omniauth-twitter'
 require 'rack/csrf'
 require 'mongo_mapper'
+require 'uri'
+require 'pathname'
 require 'rack-session-mongo'
 require 'dalli'
 
@@ -39,11 +41,12 @@ module PayMemo
 				} )
 			@db_uri = URI.parse('mongodb://localhost:27017/paymemo')
 		end
-		MongoMapper::connection = Mongo::Connection.from_uri(@db_uri.to_s)
+		MongoMapper.connection = Mongo::Connection.from_uri(@db_uri.to_s)
+		MongoMapper.database = Pathname(@db_uri.path).basename.to_s
 
 		use(
 			Rack::Session::Mongo,{
-				:db => MongoMapper.connection.db('dbname'),
+				:db => MongoMapper.database,
 				:expire_after => 6 * 30 * 24 * 60 * 60,
 				:secret => ENV['SESSION_SECRET']
 			})

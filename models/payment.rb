@@ -16,6 +16,7 @@ module PayMemo
 			raise ArgumentError.new('amount should not zero.') if amount == 0
 
 			payment = Payment.new(wallet: wallet, item: item, amount: amount)
+			payment.save!
 			return payment
 		end
 	end 

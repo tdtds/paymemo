@@ -11,9 +11,15 @@ Bundler.require :test if defined?(Bundler)
 
 RSpec.configure do |config|
 	require 'mongo_mapper'
-	MongoMapper::connection = Mongo::Connection.from_uri('mongodb://localhost:27017/paymemo_test')
+	require 'uri'
+	require 'pathname'
+
+	uri = URI('mongodb://localhost:27017/paymemo_test')
+	dbname = Pathname(uri.path).basename.to_s
+	MongoMapper::connection = Mongo::Connection.from_uri(uri.to_s)
+	MongoMapper::database = dbname
 	config.before(:each) do
-		MongoMapper.connection.db('dbname').collections.each {|collection| collection.remove rescue nil}
+		MongoMapper.database.collections.each {|collection| collection.remove rescue nil}
 	end
 end
 

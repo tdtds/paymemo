@@ -36,12 +36,12 @@ $(function(){
 
 		$('input')[0].focus();
 
-		$.getJSON('/' + wallet, function(json){
+		$.getJSON('/' + wallet + '.json', function(json){
 			var table = $('table', $div);
 			table.empty();
 			table.append('<caption>Total: ' + addFigure(json['total']) + '</caption>');
 			jQuery.each(json['list'], function(){
-				table.append('<tr><th>' + this[0] + '</th><td>' + addFigure(this[1]) + '</td></tr>');
+				table.append('<tr><th>' + this['item'] + '</th><td>' + addFigure(this['amount']) + '</td></tr>');
 			});
 		});
 	});

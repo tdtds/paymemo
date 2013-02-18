@@ -1,3 +1,13 @@
+# -*- coding: utf-8; -*-
+#
+# routes/init.rb : initialize routes
+#
+# Copyright (C) 2013 TADA Tadashi <t@tdtds.jp>
+# You can modify and distribue this under GPL.
+#
+
+require_relative 'payment'
+
 #def load( db )
 #	begin
 #		JSON::parse( open( "#{db}.json", 'r:utf-8', &:read ) )

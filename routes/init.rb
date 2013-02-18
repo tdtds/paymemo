@@ -15,8 +15,9 @@ module PayMemo
 		# returning total amount and recent 5 items with json format.
 		#
 		get '/:wallet.json' do
-			list = Payment.find_by_wallet(params(:wallet)).reverse[0,5]
-			total = Payment.total(wallet)
+			wallet = params[:wallet]
+			list = Payment.where(wallet: wallet)
+			total = 0 #Payment.total(wallet)
 
 			{'list' => list, 'total' => total}.to_json
 		end
