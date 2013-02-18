@@ -6,18 +6,17 @@
 		%script{src: '//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js'}
 		%script{src: '/js/paymemo.js'}
 		%link{rel: 'stylesheet', href: '/css/default.css', type: 'text/css'}
-		%link{rel: "apple-touch-icon", href: "/css/webclip.png"}
-		%meta{name: "viewport", content: "width=device-width; maximum-scale=1.0; user-scalable=no"}
+		%link{rel: "apple-touch-icon", href: "/img/webclip.png"}
+		%meta{name: "viewport", content: "width=device-width, maximum-scale=1.0, user-scalable=0"}
 	%body
-		%h1 paymemo
-
-		.paymemo#sample
-			%h2
-			%form
-				%input.paymemo-item{name: "item", placeholder: "item name", required: '', autofocus: ''}
-				%input.paymemo-amount{type: "number", name: "amount", placeholder: "amount"}
-				%input{name: "db", type: "hidden", value: ""}
-				%input.paymemo-submit{type: "submit", value: "+"}
-				%table
-					%caption.loading
-						%img{src: "style/loading.gif", alt: "loading...", width: "16", height: "16"}
+		- (ENV['WALLETS'] || sample).split(/,\s*/).each do |wallet|
+			.paymemo{id: wallet}
+				%h2<#{wallet}
+				%form
+					%input.paymemo-item{name: "item", placeholder: "item name", required: '', autofocus: ''}
+					%input.paymemo-amount{type: "number", name: "amount", placeholder: "amount"}
+					%input{name: "wallet", type: "hidden", value: wallet}
+					%input.paymemo-submit{type: "submit", value: "+"}
+					%table
+						%caption.loading
+							%img{src: "/img/loading.gif", alt: "loading...", width: "16", height: "16"}
