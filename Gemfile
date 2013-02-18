@@ -16,6 +16,7 @@ gem 'dalli'
 group :development, :test do
 	gem 'rake'
 	gem 'rspec'
+	gem 'autotest'
 	gem 'sinatra-reloader', require: 'sinatra/reloader'
 	gem 'pit', require: 'pit'
 	gem 'pry'
