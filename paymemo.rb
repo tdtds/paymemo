@@ -58,6 +58,5 @@ module PayMemo
 end
 
 require_relative 'models/init'
-require_relative 'helpers/init'
 require_relative 'routes/init'
 PayMemo::App.run! if __FILE__ == $0

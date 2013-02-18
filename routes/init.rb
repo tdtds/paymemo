@@ -18,7 +18,7 @@ module PayMemo
 			list = Payment.find_by_wallet(params(:wallet)).reverse[0,5]
 			total = Payment.total(wallet)
 
-			{'list': list, 'total': total}.to_json
+			{'list' => list, 'total' => total}.to_json
 		end
 
 		#
