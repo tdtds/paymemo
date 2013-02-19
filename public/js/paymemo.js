@@ -1,7 +1,7 @@
 /*
  paymemo.js
 
- Copyright (C) 2010 TADA Tadashi <t@tdtds.jp>
+ Copyright (C) 2013 TADA Tadashi <t@tdtds.jp>
  You can modify and distribue this under GPL.
  */
 
