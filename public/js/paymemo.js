@@ -38,11 +38,13 @@ $(function(){
 				dataType: 'json'
 			}).done(function(json){
 				var caption = $('caption', $div);
-				var item = json['list'][0];
+				var payment = json['list'][0];
+
 				caption.html('Total: ' + addFigure(json['total']));
-				caption.after('<tr><th>'+item[0]+'</th><td>'+item[1]+'</td></tr>');
-				$('div#'+db+' .paymemo-item')[0].value = '';
-				$('div#'+db+' .paymemo-amount')[0].value = '';
+				caption.after('<tr><th>' + payment['item'] + '</th><td>' + addFigure(payment['amount']) + '</td></tr>');
+				$('.paymemo-item', $form)[0].value = '';
+				$('.paymemo-amount', $form)[0].value = '';
+				$('.paymemo-item', $form).focus();
 			});
 			return false;
 		});

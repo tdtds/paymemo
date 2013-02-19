@@ -13,7 +13,7 @@
 			.paymemo{id: wallet}
 				%h2<#{wallet}
 				%form
-					%input.paymemo-item{name: "item", placeholder: "item name", required: '', autofocus: ''}
+					%input.paymemo-item{name: "item", placeholder: "item name", required: ''}
 					%input.paymemo-amount{type: "number", name: "amount", placeholder: "amount"}
 					%input.paymemo-submit{type: "submit", value: "+"}
 					%input{csrf_input}

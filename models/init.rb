@@ -7,6 +7,7 @@
 #
 
 require_relative 'payment'
+require_relative 'total'
 
 #def load( db )
 #	begin
