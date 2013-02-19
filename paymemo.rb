@@ -35,7 +35,7 @@ module PayMemo
 			register Sinatra::Reloader
 			disable :protection
 
-			@auth_twitter = Pit::get( 'auth_twitter', :require => {
+			@auth_twitter = Pit::get( 'paymemo_twitter', :require => {
 					:id => 'your CONSUMER KEY of Twitter APP.',
 					:secret => 'your CONSUMER SECRET of Twitter APP.',
 				} )
