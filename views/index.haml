@@ -4,14 +4,19 @@
 		%meta{charset: 'UTF-8'}
 		%title paymemo
 		%script{src: '//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js'}
+		%script{src: '//ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/jquery-ui.min.js'}
 		%script{src: '/js/paymemo.js'}
+		%link{rel: 'stylesheet', href: '//ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/themes/base/jquery-ui.css', type: 'text/css'}
 		%link{rel: 'stylesheet', href: '/css/default.css', type: 'text/css'}
 		%link{rel: "apple-touch-icon", href: "/img/webclip.png"}
 		%meta{name: "viewport", content: "width=device-width, maximum-scale=1.0, user-scalable=0"}
 	%body
+		%ul
+			- (ENV['WALLETS'] || sample).split(/,\s*/).each do |wallet|
+				%li
+					%a{href: "##{wallet}"}<#{wallet}
 		- (ENV['WALLETS'] || sample).split(/,\s*/).each do |wallet|
 			.paymemo{id: wallet}
-				%h2<#{wallet}
 				%form
 					%input.paymemo-item{name: "item", placeholder: "item name", required: ''}
 					%input.paymemo-amount{type: "number", name: "amount", placeholder: "amount"}

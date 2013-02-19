@@ -25,6 +25,8 @@ $(function(){
 		return num;
 	}
 
+	$('body').tabs();
+
 	$('div.paymemo').each(function(){
 		var $div = $(this);
 		var $form = $('form', $div);
