@@ -57,6 +57,15 @@ module PayMemo
 			@auth_twitter[:secret])
 
 		use Rack::Csrf
+		helpers do
+			def csrf_meta
+				{:name => "_csrf", :content => Rack::Csrf.token(env)}
+			end
+
+			def csrf_input
+				{:type => 'hidden', :name => '_csrf', :value => Rack::Csrf.token(env)}
+			end
+		end
 	end
 end
 

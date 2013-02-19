@@ -6,6 +6,19 @@
  */
 
 $(function(){
+	/*
+	 * setup against CSRF
+	 */
+	jQuery.ajaxSetup({
+		beforeSend: function(xhr) {
+			var token = jQuery('meta[name="_csrf"]').attr('content');
+			xhr.setRequestHeader('X_CSRF_TOKEN', token);
+		}
+	});
+
+	/*
+	 * add commas each 3 digits
+	 */
 	function addFigure(str) {
 		var num = new String(str).replace(/,/g, "");
 		while(num != (num = num.replace(/^(-?\d+)(\d{3})/, "$1,$2")));

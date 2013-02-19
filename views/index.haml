@@ -15,8 +15,8 @@
 				%form
 					%input.paymemo-item{name: "item", placeholder: "item name", required: '', autofocus: ''}
 					%input.paymemo-amount{type: "number", name: "amount", placeholder: "amount"}
-					%input{name: "wallet", type: "hidden", value: wallet}
 					%input.paymemo-submit{type: "submit", value: "+"}
+					%input{csrf_input}
 					%table
 						%caption.loading
 							%img{src: "/img/loading.gif", alt: "loading...", width: "16", height: "16"}

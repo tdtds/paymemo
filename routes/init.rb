@@ -26,6 +26,7 @@ module PayMemo
 		# receiving new amount then returning new total and a item with json format.
 		#
 		post '/:wallet' do
+			puts "post to #{params[:wallet]}"
 			wallet = params[:wallet]
 			item = params[:item]
 			amount = (params[:amount] || '0').to_i
