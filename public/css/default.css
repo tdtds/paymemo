@@ -11,7 +11,9 @@
 }
 
 body {
-	width: 320px;
+	width: 99%;
+	max-width: 540px;
+	margin: 0px auto;
 	background-color: #eee;
 	font-size: 80%;
 	line-height: 1.8;
@@ -45,6 +47,7 @@ h1 {
 
 .paymemo-submit {
 	width: 10%;
+	padding: 0.5em;
 }
 
 .paymemo table {
@@ -59,7 +62,7 @@ h1 {
 
 .paymemo caption {
 	text-align: right;
-	padding-right: 1em;
+	padding: 0.4em 1em;
 }
 
 .paymemo caption.loading {
