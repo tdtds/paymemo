@@ -8,18 +8,17 @@
 module PayMemo
 	class App < Sinatra::Base
 		before do
-			if request.path !~ %r|^/auth/| && session[:user]
+			if request.path !~ %r|^/auth/| && !session[:user]
 				redirect '/auth/twitter'
-			else
-				user = ENV['ALLOW_USERS'].split(/,\s*/).index(session[:user])
-				redirect '/auth/twitter' unless user
 			end
 		end
 
 		get '/auth/twitter/callback' do
 			session.clear
-			info = request.env['omniauth.auth']
-			session[:user] = info['extra']['raw_info']['id']
+			twitter_user = request.env['omniauth.auth']['extra']['raw_info']['screen_name']
+			if ENV['ALLOW_USERS'].split(/,\s*/).index(twitter_user)
+				session[:user] = twitter_user
+			end
 			redirect '/'
 		end
 
