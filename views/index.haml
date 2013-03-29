@@ -12,10 +12,10 @@
 		%meta{name: "viewport", content: "width=device-width, maximum-scale=1.0, user-scalable=0"}
 	%body
 		%ul
-			- (ENV['WALLETS'] || sample).split(/,\s*/).each do |wallet|
+			- (ENV['WALLETS'] || 'sample').split(/,\s*/).each do |wallet|
 				%li
 					%a{href: "##{wallet}"}<#{wallet}
-		- (ENV['WALLETS'] || sample).split(/,\s*/).each do |wallet|
+		- (ENV['WALLETS'] || 'sample').split(/,\s*/).each do |wallet|
 			.paymemo{id: wallet}
 				%form
 					%input.paymemo-item{name: "item", placeholder: "item name", required: ''}
