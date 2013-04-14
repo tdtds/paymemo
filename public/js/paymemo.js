@@ -53,13 +53,20 @@ $(function(){
 
 		$('input')[0].focus();
 
-		$.getJSON('/' + wallet + '.json', function(json){
+		$.ajax({
+			url: '/' + wallet + '.json',
+			type: 'GET',
+			dataType: 'json',
+			cacehe: false
+		}).done(function(json){
 			var table = $('table', $div);
 			table.empty();
 			table.append('<caption>Total: ' + addFigure(json['total']) + '</caption>');
 			jQuery.each(json['list'], function(){
 				table.append('<tr><th>' + this['item'] + '</th><td>' + addFigure(this['amount']) + '</td></tr>');
 			});
+		}).fail(function(XMLHttpRequest, textStatus, errorThrown){
+			alert('error: ' + textStatus);
 		});
 	});
 });
