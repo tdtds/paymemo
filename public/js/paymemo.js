@@ -33,6 +33,7 @@ $(function(){
 		var wallet = $div.attr('id');
 
 		$form.on('submit', function(){
+			$('.paymemo-submit', $form).attr('disabled', true);
 			$.ajax({
 				type: 'POST',
 				url: '/' + wallet,
@@ -44,8 +45,9 @@ $(function(){
 
 				caption.html('Total: ' + addFigure(json['total']));
 				caption.after('<tr><th>' + payment['item'] + '</th><td>' + addFigure(payment['amount']) + '</td></tr>');
-				$('.paymemo-item', $form)[0].value = '';
-				$('.paymemo-amount', $form)[0].value = '';
+				$('.paymemo-submit', $form).attr('disabled', false);
+				$('.paymemo-item', $form).val('');
+				$('.paymemo-amount', $form).val('');
 				$('.paymemo-item', $form).focus();
 			});
 			return false;
