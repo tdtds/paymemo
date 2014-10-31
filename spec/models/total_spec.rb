@@ -2,7 +2,7 @@
 require 'spec_helper'
 require 'models/total'
 
-describe 'PayMemo::Total' do
+describe 'PayMemo::Total', :type => :model do
 	describe '.add' do
 		context '最初にwalletの追加をすると' do
 			before do
@@ -10,8 +10,15 @@ describe 'PayMemo::Total' do
 			end
 			subject{ @payment }
 
-			its(:wallet) {should eq('sample1')}
-			its(:amount) {should eq(100)}
+			describe '#wallet' do
+			  subject { super().wallet }
+			  it {is_expected.to eq('sample1')}
+			end
+
+			describe '#amount' do
+			  subject { super().amount }
+			  it {is_expected.to eq(100)}
+			end
 		end
 
 		context '既存のwalletに金額を追加すると' do
@@ -21,8 +28,15 @@ describe 'PayMemo::Total' do
 			end
 			subject{ @payment }
 
-			its(:wallet) {should eq('sample1')}
-			its(:amount) {should eq(100+500)}
+			describe '#wallet' do
+			  subject { super().wallet }
+			  it {is_expected.to eq('sample1')}
+			end
+
+			describe '#amount' do
+			  subject { super().amount }
+			  it {is_expected.to eq(100+500)}
+			end
 		end
 
 		context 'walletが空の場合' do

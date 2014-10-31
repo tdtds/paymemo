@@ -2,7 +2,7 @@
 require 'spec_helper'
 require 'models/payment'
 
-describe 'PayMemo::Payment' do
+describe 'PayMemo::Payment', :type => :model do
 	describe '.add' do
 		context 'アイテムの追加をすると' do
 			before do
@@ -10,9 +10,20 @@ describe 'PayMemo::Payment' do
 			end
 			subject{ @payment }
 
-			its(:wallet) {should eq('sample1')}
-			its(:item)   {should eq('item1')}
-			its(:amount) {should eq(100)}
+			describe '#wallet' do
+			  subject { super().wallet }
+			  it {is_expected.to eq('sample1')}
+			end
+
+			describe '#item' do
+			  subject { super().item }
+			  it {is_expected.to eq('item1')}
+			end
+
+			describe '#amount' do
+			  subject { super().amount }
+			  it {is_expected.to eq(100)}
+			end
 		end
 
 		context 'walletが空の場合' do
