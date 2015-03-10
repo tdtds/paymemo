@@ -35,7 +35,7 @@ GEM
       activesupport (>= 3.0)
       mongo (~> 1.8)
       plucky (~> 0.6.5)
-    multi_json (1.10.1)
+    multi_json (1.11.0)
     oauth (0.4.7)
     omniauth (1.2.2)
       hashie (>= 1.2, < 4)
