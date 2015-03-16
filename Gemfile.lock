@@ -19,7 +19,7 @@ GEM
       bson (~> 1.12.0)
     builder (3.2.2)
     coderay (1.1.0)
-    dalli (2.7.2)
+    dalli (2.7.3)
     diff-lcs (1.2.5)
     haml (4.0.6)
       tilt
@@ -70,7 +70,7 @@ GEM
       rspec-core (~> 3.2.0)
       rspec-expectations (~> 3.2.0)
       rspec-mocks (~> 3.2.0)
-    rspec-core (3.2.1)
+    rspec-core (3.2.2)
       rspec-support (~> 3.2.0)
     rspec-expectations (3.2.0)
       diff-lcs (>= 1.2.0, < 2.0)
@@ -93,7 +93,7 @@ GEM
     sinatra-reloader (1.0)
       sinatra-contrib
     slop (3.6.0)
-    thread_safe (0.3.4)
+    thread_safe (0.3.5)
     tilt (1.4.1)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
