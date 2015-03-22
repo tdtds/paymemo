@@ -1,0 +1,13 @@
+{
+  "name":"paymemo",
+  "scripts":{},
+  "env":{
+    "ALLOW_USERS":"tdtds",
+    "WALLETS":{
+      "required":true
+    }
+  },
+  "addons":[
+    "mongolab"
+  ]
+}
