@@ -1,13 +1,21 @@
 {
-  "name":"paymemo",
-  "scripts":{},
-  "env":{
-    "ALLOW_USERS":"tdtds",
-    "WALLETS":{
-      "required":true
+  "name": "paymemo",
+  "scripts": {},
+  "env": {
+    "ALLOW_USERS": {
+      "required": true
+    },
+    "TWITTER_CONSUMER_ID": {
+      "required": true
+    },
+    "TWITTER_CONSUMER_SECRET": {
+      "required": true
+    },
+    "WALLETS": {
+      "required": true
     }
   },
-  "addons":[
+  "addons": [
     "mongolab"
   ]
 }
