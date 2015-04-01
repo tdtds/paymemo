@@ -4,7 +4,7 @@ ruby '2.2.1'
 
 gem 'sinatra'
 gem 'puma'
-gem 'haml'
+gem 'hamlit'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'mongo_mapper'

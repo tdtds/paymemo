@@ -7,7 +7,7 @@
 # You can modify and distribue this under GPL.
 #
 require 'sinatra/base'
-require 'haml'
+require 'hamlit'
 require 'json'
 require 'omniauth'
 require 'omniauth-twitter'
