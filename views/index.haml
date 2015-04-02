@@ -1,27 +1,27 @@
 !!!
 %html
-	%head
-		%meta{charset: 'UTF-8'}
-		%title paymemo
-		%script{src: '//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js'}
-		%script{src: '//ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/jquery-ui.min.js'}
-		%script{src: '/js/paymemo.js'}
-		%link{rel: 'stylesheet', href: '//ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/themes/base/jquery-ui.css', type: 'text/css'}
-		%link{rel: 'stylesheet', href: '/css/default.css', type: 'text/css'}
-		%link{rel: "apple-touch-icon", href: "/img/paymemo.png"}
-		%meta{name: "viewport", content: "width=device-width, maximum-scale=1.0, user-scalable=0"}
-	%body
-		%ul
-			- (ENV['WALLETS'] || 'sample').split(/,\s*/).each do |wallet|
-				%li
-					%a{href: "##{wallet}"}<#{wallet}
-		- (ENV['WALLETS'] || 'sample').split(/,\s*/).each do |wallet|
-			.paymemo{id: wallet}
-				%form
-					%input.paymemo-item{name: "item", placeholder: "item name", required: ''}
-					%input.paymemo-amount{type: "number", name: "amount", placeholder: "amount"}
-					%input.paymemo-submit{type: "submit", value: "+"}
-					%input{csrf_input}
-					%table
-						%caption.loading
-							%img{src: "/img/loading.gif", alt: "loading...", width: "16", height: "16"}
+  %head
+    %meta{charset: 'UTF-8'}
+    %title paymemo
+    %script{src: '//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js'}
+    %script{src: '//ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/jquery-ui.min.js'}
+    %script{src: '/js/paymemo.js'}
+    %link{rel: 'stylesheet', href: '//ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/themes/base/jquery-ui.css', type: 'text/css'}
+    %link{rel: 'stylesheet', href: '/css/default.css', type: 'text/css'}
+    %link{rel: "apple-touch-icon", href: "/img/paymemo.png"}
+    %meta{name: "viewport", content: "width=device-width, maximum-scale=1.0, user-scalable=0"}
+  %body
+    %ul
+      - (ENV['WALLETS'] || 'sample').split(/,\s*/).each do |wallet|
+        %li
+          %a{href: "##{wallet}"}<#{wallet}
+    - (ENV['WALLETS'] || 'sample').split(/,\s*/).each do |wallet|
+      .paymemo{id: wallet}
+        %form
+          %input.paymemo-item{name: "item", placeholder: "item name", required: ''}
+          %input.paymemo-amount{type: "number", name: "amount", placeholder: "amount"}
+          %input.paymemo-submit{type: "submit", value: "+"}
+          %input{csrf_input}
+          %table
+            %caption.loading
+              %img{src: "/img/loading.gif", alt: "loading...", width: "16", height: "16"}
