@@ -6,21 +6,14 @@
 # Copyright (C) 2013 TADA Tadashi <t@tdtds.jp>
 # You can modify and distribue this under GPL.
 #
-require 'sinatra/base'
-require 'hamlit'
+Bundler.require(:default, ENV['RACK_ENV'] || :development)
 require 'json'
-require 'omniauth'
-require 'omniauth-twitter'
-require 'rack/csrf'
-require 'mongo_mapper'
 require 'uri'
 require 'pathname'
-require 'rack-session-mongo'
-require 'dalli'
 
 module PayMemo
 	class App < Sinatra::Base
-		set :haml, {format: :html5, escape_html: true}
+		set :haml, {format: :html5}
 
 		configure :production do
          @auth_twitter  = {
