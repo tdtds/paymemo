@@ -22,7 +22,7 @@ GEM
     dalli (2.7.4)
     diff-lcs (1.2.5)
     escape_utils (1.1.0)
-    hamlit (1.0.0)
+    hamlit (1.2.0)
       escape_utils
       temple (~> 0.7.3)
       thor
@@ -59,7 +59,7 @@ GEM
       slop (~> 3.4)
     puma (2.11.2)
       rack (>= 1.1, < 2.0)
-    rack (1.6.0)
+    rack (1.6.1)
     rack-protection (1.5.3)
       rack
     rack-session-mongo (0.0.1)
