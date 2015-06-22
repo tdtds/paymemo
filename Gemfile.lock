@@ -124,6 +124,3 @@ DEPENDENCIES
   rspec
   sinatra
   sinatra-reloader
-
-BUNDLED WITH
-   1.10.4
