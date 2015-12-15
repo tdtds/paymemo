@@ -21,9 +21,7 @@ GEM
     coderay (1.1.0)
     dalli (2.7.4)
     diff-lcs (1.2.5)
-    escape_utils (1.1.0)
-    hamlit (2.0.1)
-      escape_utils
+    hamlit (2.1.0)
       temple (~> 0.7.6)
       thor
       tilt
