@@ -19,9 +19,9 @@ GEM
       bson (~> 1.12.5)
     builder (3.2.2)
     coderay (1.1.0)
-    dalli (2.7.4)
+    dalli (2.7.5)
     diff-lcs (1.2.5)
-    hamlit (2.1.0)
+    hamlit (2.1.2)
       temple (~> 0.7.6)
       thor
       tilt
@@ -123,4 +123,4 @@ DEPENDENCIES
   sinatra-reloader
 
 BUNDLED WITH
-   1.10.6
+   1.11.2
