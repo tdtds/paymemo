@@ -20,7 +20,7 @@ module PayMemo
 				:id => ENV['TWITTER_CONSUMER_ID'],
 				:secret => ENV['TWITTER_CONSUMER_SECRET']
 			}
-			@db_uri = URI.parse(ENV['MONGOLAB_URI'])
+			@db_uri = URI.parse(ENV['MONGOLAB_URI'] || ENV['MONGODB_URI'])
 		end
 
 		configure :development, :test do
