@@ -25,7 +25,7 @@ GEM
       temple (~> 0.7.6)
       thor
       tilt
-    hashie (3.4.3)
+    hashie (3.4.4)
     i18n (0.7.0)
     json (1.8.3)
     method_source (0.8.2)
