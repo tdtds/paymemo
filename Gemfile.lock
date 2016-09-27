@@ -21,7 +21,7 @@ GEM
     coderay (1.1.1)
     dalli (2.7.6)
     diff-lcs (1.2.5)
-    hamlit (2.7.1)
+    hamlit (2.7.2)
       temple (~> 0.7.6)
       thor
       tilt
@@ -29,7 +29,7 @@ GEM
     i18n (0.7.0)
     json (1.8.3)
     method_source (0.8.2)
-    minitest (5.9.0)
+    minitest (5.9.1)
     mongo (1.12.5)
       bson (= 1.12.5)
     mongo_mapper (0.13.1)
@@ -66,7 +66,7 @@ GEM
       rack (>= 1.0)
     rack_csrf (2.5.0)
       rack (>= 1.1.0)
-    rake (11.2.2)
+    rake (11.3.0)
     rspec (3.5.0)
       rspec-core (~> 3.5.0)
       rspec-expectations (~> 3.5.0)
