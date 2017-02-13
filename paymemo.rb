@@ -16,26 +16,22 @@ module PayMemo
 		set :haml, {format: :html5}
 
 		configure :production do
-         @auth_twitter  = {
-				:id => ENV['TWITTER_CONSUMER_ID'],
-				:secret => ENV['TWITTER_CONSUMER_SECRET']
-			}
 			@db_uri = URI.parse(ENV['MONGOLAB_URI'] || ENV['MONGODB_URI'])
 		end
 
 		configure :development, :test do
 			Bundler.require :development
+			Dotenv.load # set ALLOW_USERS, WALLETS and TWITTER_*
 			register Sinatra::Reloader
 			disable :protection
-
-			@auth_twitter = Pit::get( 'paymemo_twitter', :require => {
-					:id => 'your CONSUMER KEY of Twitter APP.',
-					:secret => 'your CONSUMER SECRET of Twitter APP.',
-				} )
 			@db_uri = URI.parse('mongodb://localhost:27017/paymemo')
 		end
 		MongoMapper.connection = Mongo::Connection.from_uri(@db_uri.to_s)
 		MongoMapper.database = Pathname(@db_uri.path).basename.to_s
+		@auth_twitter  = {
+			:id => ENV['TWITTER_CONSUMER_ID'],
+			:secret => ENV['TWITTER_CONSUMER_SECRET']
+		}
 
 		use(
 			Rack::Session::Mongo,{

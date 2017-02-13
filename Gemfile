@@ -19,6 +19,6 @@ group :development, :test do
 	gem 'rspec'
 	gem 'autotest'
 	gem 'sinatra-reloader', require: 'sinatra/reloader'
-	gem 'pit', require: 'pit'
+	gem 'dotenv', require: 'dotenv'
 	gem 'pry'
 end

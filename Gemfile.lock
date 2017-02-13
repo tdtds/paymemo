@@ -21,6 +21,7 @@ GEM
     coderay (1.1.1)
     dalli (2.7.6)
     diff-lcs (1.3)
+    dotenv (2.2.0)
     hamlit (2.8.0)
       temple (>= 0.8.0)
       thor
@@ -48,7 +49,6 @@ GEM
     omniauth-twitter (1.4.0)
       omniauth-oauth (~> 1.1)
       rack
-    pit (0.0.7)
     plucky (0.7.0)
       mongo (~> 1.5)
     pry (0.10.4)
@@ -109,11 +109,11 @@ DEPENDENCIES
   autotest
   bson_ext
   dalli
+  dotenv
   hamlit
   mongo_mapper
   omniauth
   omniauth-twitter
-  pit
   pry
   puma
   rack-session-mongo
