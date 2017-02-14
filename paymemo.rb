@@ -1,5 +1,3 @@
-# -*- coding: utf-8; -*-
-#
 # paymemo.rb
 # https://github.com/tdtds/paymemo
 #
@@ -8,55 +6,41 @@
 #
 Bundler.require(:default, ENV['RACK_ENV'] || :development)
 require 'json'
-require 'uri'
-require 'pathname'
 
 module PayMemo
 	class App < Sinatra::Base
 		set :haml, {format: :html5}
+		db_uri = 'mongodb://localhost:27017/paymemo'
 
 		configure :production do
-         @auth_twitter  = {
-				:id => ENV['TWITTER_CONSUMER_ID'],
-				:secret => ENV['TWITTER_CONSUMER_SECRET']
-			}
-			@db_uri = URI.parse(ENV['MONGOLAB_URI'] || ENV['MONGODB_URI'])
+			db_uri = ENV['MONGOLAB_URI'] || ENV['MONGODB_URI']
 		end
 
 		configure :development, :test do
-			Bundler.require :development
+			Dotenv.load # set ALLOW_USERS, WALLETS and TWITTER_CONSUMER_*
 			register Sinatra::Reloader
 			disable :protection
-
-			@auth_twitter = Pit::get( 'paymemo_twitter', :require => {
-					:id => 'your CONSUMER KEY of Twitter APP.',
-					:secret => 'your CONSUMER SECRET of Twitter APP.',
-				} )
-			@db_uri = URI.parse('mongodb://localhost:27017/paymemo')
 		end
-		MongoMapper.connection = Mongo::Connection.from_uri(@db_uri.to_s)
-		MongoMapper.database = Pathname(@db_uri.path).basename.to_s
 
-		use(
-			Rack::Session::Mongo,{
-				:db => MongoMapper.database,
-				:expire_after => 6 * 30 * 24 * 60 * 60,
-				:secret => ENV['SESSION_SECRET']
-			})
+		configure do
+			Mongoid::Config.load_configuration({clients:{default:{uri: db_uri}}})
 
-		use(
-			OmniAuth::Strategies::Twitter,
-			@auth_twitter[:id],
-			@auth_twitter[:secret])
+			session_expire = 60 * 60 * 24 * 30 - 1
+			use Rack::Session::Dalli, cache: Dalli::Client.new, expire_after: session_expire
 
-		use Rack::Csrf
-		helpers do
-			def csrf_meta
-				{:name => "_csrf", :content => Rack::Csrf.token(env)}
-			end
+			twitter_id = ENV['TWITTER_CONSUMER_ID']
+			twitter_secret = ENV['TWITTER_CONSUMER_SECRET']
+			use OmniAuth::Strategies::Twitter, twitter_id, twitter_secret
 
-			def csrf_input
-				{:type => 'hidden', :name => '_csrf', :value => Rack::Csrf.token(env)}
+			use Rack::Csrf
+			helpers do
+				def csrf_meta
+					{:name => "_csrf", :content => Rack::Csrf.token(env)}
+				end
+
+				def csrf_input
+					{:type => 'hidden', :name => '_csrf', :value => Rack::Csrf.token(env)}
+				end
 			end
 		end
 	end

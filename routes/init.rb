@@ -32,8 +32,7 @@ module PayMemo
 		get '/:wallet.json' do
 			wallet = params[:wallet]
 			list = Payment.where(wallet: wallet).sort(:created_at.desc).limit(10)
-			total = Total.find_by_wallet(wallet).amount rescue 0
-
+			total = Total.where(wallet: wallet).first.amount rescue 0
 			{'list' => list, 'total' => total}.to_json
 		end
 

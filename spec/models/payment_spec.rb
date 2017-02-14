@@ -1,8 +1,11 @@
-# -*- coding: utf-8 -*-
 require 'spec_helper'
 require 'models/payment'
 
 describe 'PayMemo::Payment', :type => :model do
+	before do
+		PayMemo::Payment.delete_all
+	end
+
 	describe '.add' do
 		context 'アイテムの追加をすると' do
 			before do
