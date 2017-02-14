@@ -1,27 +1,23 @@
-# -*- coding: utf-8; -*-
-require 'mongo_mapper'
-
 module PayMemo
 	class Total
-		include MongoMapper::Document
+		include ::Mongoid::Document
+		include ::Mongoid::Timestamps
+		store_in collection: "pay_memo.totals"
 
-		key :wallet, type: String,  required: true , unique: true
-		key :amount, type: Integer, required: true 
-		timestamps!
+		field :wallet, type: String
+		field :amount, type: Integer
+		validates_presence_of :wallet
+		validates_uniqueness_of :wallet
 
 		def self.add(wallet, amount)
-			raise ArgumentError.new('wallet should not empty.') if !wallet || wallet.empty?
-
-			total = Total.find_by_wallet(wallet)
-			if total
-				total[:amount] += amount
-			else
-				total = Total.new(wallet: wallet, amount: amount)
-			end
-			total.save!
+			total = find_or_create_by(wallet: wallet)
+			raise ArgumentError.new(total.errors.messages) unless total.valid?
+			total.update_attributes!(
+				wallet: wallet,
+				amount: (total.amount || 0) + amount
+			)
+			total.save
 			return total
 		end
 	end 
 end
-
-

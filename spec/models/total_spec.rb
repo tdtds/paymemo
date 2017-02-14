@@ -1,8 +1,11 @@
-# -*- coding: utf-8 -*-
 require 'spec_helper'
 require 'models/total'
 
 describe 'PayMemo::Total', :type => :model do
+	before do
+		PayMemo::Total.delete_all
+	end
+
 	describe '.add' do
 		context '最初にwalletの追加をすると' do
 			before do
