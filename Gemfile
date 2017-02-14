@@ -15,8 +15,7 @@ gem 'memcachier', require: 'memcachier'
 
 group :development, :test do
 	gem 'rake'
-	gem 'rspec'
-	gem 'autotest'
+	gem 'guard-rspec'
 	gem 'sinatra-reloader', require: 'sinatra/reloader'
 	gem 'dotenv', require: 'dotenv'
 	gem 'pry'
