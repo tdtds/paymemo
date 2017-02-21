@@ -57,8 +57,8 @@ GEM
       nenv (~> 0.1)
       shellany (~> 0.0)
     oauth (0.5.1)
-    omniauth (1.5.0)
-      hashie (~> 3.5.0, < 4)
+    omniauth (1.6.1)
+      hashie (>= 3.4.6, < 3.6.0)
       rack (>= 1.6.2, < 3)
     omniauth-oauth (1.1.0)
       oauth
@@ -70,7 +70,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
-    puma (3.7.0)
+    puma (3.7.1)
     rack (1.6.5)
     rack-protection (1.5.3)
       rack
@@ -128,7 +128,7 @@ DEPENDENCIES
   guard-rspec
   hamlit
   memcachier
-  mongoid
+  mongoid (~> 6.0)
   omniauth
   omniauth-twitter
   pry
@@ -142,4 +142,4 @@ RUBY VERSION
    ruby 2.3.3p222
 
 BUNDLED WITH
-   1.14.3
+   1.14.4
