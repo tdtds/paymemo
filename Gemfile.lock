@@ -128,7 +128,7 @@ DEPENDENCIES
   guard-rspec
   hamlit
   memcachier
-  mongoid
+  mongoid (~> 6.0)
   omniauth
   omniauth-twitter
   pry
