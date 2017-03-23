@@ -138,5 +138,8 @@ DEPENDENCIES
   sinatra
   sinatra-reloader
 
+RUBY VERSION
+   ruby 2.4.1p111
+
 BUNDLED WITH
-   1.14.4
+   1.14.6
