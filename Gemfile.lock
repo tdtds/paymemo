@@ -46,7 +46,7 @@ GEM
     memcachier (0.0.2)
     method_source (0.8.2)
     minitest (5.10.3)
-    mongo (2.4.2)
+    mongo (2.4.3)
       bson (>= 4.2.1, < 5.0.0)
     mongoid (6.2.0)
       activemodel (~> 5.1)
