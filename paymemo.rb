@@ -14,6 +14,9 @@ module PayMemo
 
 		configure :production do
 			db_uri = ENV['MONGOLAB_URI'] || ENV['MONGODB_URI']
+			%w(SERVERS USERNAME PASSWORD).each do |x|
+				ENV["MEMCACHED_#{x}"] = ENV["MEMCACHEDCLOUD_#{x}"] if ENV["MEMCACHEDCLOUD_#{x}"]
+			end
 		end
 
 		configure :development, :test do
