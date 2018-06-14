@@ -11,7 +11,6 @@ gem 'mongoid', "~> 6.0", require: 'mongoid'
 gem 'bson_ext'
 gem 'rack_csrf', require: 'rack/csrf'
 gem 'dalli', require: 'rack/session/dalli'
-gem 'memcachier', require: 'memcachier'
 
 group :development, :test do
 	gem 'rake'
