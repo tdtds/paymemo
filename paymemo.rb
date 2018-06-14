@@ -11,25 +11,30 @@ module PayMemo
 	class App < Sinatra::Base
 		set :haml, {format: :html5}
 		db_uri = 'mongodb://localhost:27017/paymemo'
+		memcache = nil
 
 		configure :production do
 			db_uri = ENV['MONGOLAB_URI'] || ENV['MONGODB_URI']
 			%w(SERVERS USERNAME PASSWORD).each do |x|
 				ENV["MEMCACHE_#{x}"] = ENV["MEMCACHEDCLOUD_#{x}"] if ENV["MEMCACHEDCLOUD_#{x}"]
 			end
+			memcache = Dalli::Client.new(ENV['MEMCACHE_SERVERS'],
+			                             username: ENV['MEMCACHE_USERNAME'],
+			                             password: ENV['MEMCACHE_PASSWORD'])
 		end
 
 		configure :development, :test do
 			Dotenv.load # set ALLOW_USERS, WALLETS and TWITTER_CONSUMER_*
 			register Sinatra::Reloader
 			disable :protection
+			memcache = Dalli::Client.new
 		end
 
 		configure do
 			Mongoid::Config.load_configuration({clients:{default:{uri: db_uri}}})
 
 			session_expire = 60 * 60 * 24 * 30 - 1
-			use Rack::Session::Dalli, cache: Dalli::Client.new, expire_after: session_expire
+			use Rack::Session::Dalli, cache: memcache, expire_after: session_expire
 
 			twitter_id = ENV['TWITTER_CONSUMER_ID']
 			twitter_secret = ENV['TWITTER_CONSUMER_SECRET']
