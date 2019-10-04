@@ -23,7 +23,14 @@ module PayMemo
 		end
 
 		configure do
-			Mongoid::Config.load_configuration({clients:{default:{uri: db_uri}}})
+			Mongoid::Config.load_configuration({
+				clients:{
+					default:{
+						uri: db_uri
+						options:{retry_writes: false}
+					}
+				}
+			})
 
 			session_expire = 60 * 60 * 24 * 30 - 1
 			use Rack::Session::Dalli, cache: Dalli::Client.new, expire_after: session_expire
