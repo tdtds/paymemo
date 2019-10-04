@@ -26,7 +26,7 @@ module PayMemo
 			Mongoid::Config.load_configuration({
 				clients:{
 					default:{
-						uri: db_uri
+						uri: db_uri,
 						options:{retry_writes: false}
 					}
 				}
