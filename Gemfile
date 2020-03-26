@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '~> 2.6.0'
+ruby '~> 2.7.0'
 
 gem 'puma'
 gem 'sinatra', require: 'sinatra/base'
@@ -18,5 +18,4 @@ group :development, :test do
 	gem 'guard-rspec'
 	gem 'sinatra-reloader', require: 'sinatra/reloader'
 	gem 'dotenv', require: 'dotenv'
-	gem 'pry'
 end
